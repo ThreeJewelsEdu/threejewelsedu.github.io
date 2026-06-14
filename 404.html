@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — Ratnatraya Institute</title>
+  <meta name="robots" content="noindex" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .notfound-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .notfound-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .notfound-inner { position: relative; z-index: 1; max-width: 600px; }
+    .notfound-gems {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 2rem;
+    }
+    .notfound-gem {
+      font-size: 2.5rem;
+      animation: gem-bounce 2s ease-in-out infinite;
+    }
+    .notfound-gem:nth-child(2) { animation-delay: 0.2s; }
+    .notfound-gem:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes gem-bounce {
+      0%, 100% { transform: translateY(0); opacity: 0.6; }
+      50% { transform: translateY(-12px); opacity: 1; }
+    }
+    .notfound-code {
+      font-family: var(--font-heading);
+      font-size: clamp(4rem, 15vw, 8rem);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold));
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s ease infinite;
+    }
+    .notfound-section h2 { margin-bottom: 1rem; }
+    .notfound-section p { font-size: 1rem; line-height: 1.9; margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .notfound-tagline {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .notfound-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .notfound-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 1px solid var(--glass-border);
+    }
+    .notfound-links a {
+      font-size: 0.85rem;
+      color: var(--cream-muted);
+      transition: var(--transition);
+      letter-spacing: 0.03em;
+    }
+    .notfound-links a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg class="logo-diamonds" viewBox="0 0 42 42" fill="none">
+          <polygon points="21,2 28,14 21,20 14,14" fill="#D4AF37" opacity="0.95"/>
+          <polygon points="10,18 17,26 10,34 3,26" fill="#A8860A" opacity="0.85"/>
+          <polygon points="32,18 39,26 32,34 25,26" fill="#F0D060" opacity="0.85"/>
+        </svg>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Ratnatraya Institute</span>
+          <span class="logo-tagline">Right Knowledge · Right Path · Right Victory</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="test-papers.html">Test Papers</a></li>
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admission.html" class="nav-enroll">Enroll Free</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="courses.html">Courses</a>
+    <a href="test-papers.html">Test Papers</a>
+    <a href="faculty.html">Faculty</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+    <a href="admission.html" class="nav-enroll">Enroll Free Now</a>
+  </div>
+
+  <!-- 404 CONTENT -->
+  <section class="notfound-section">
+    <div id="particles-js" style="position:absolute;inset:0;z-index:0;"></div>
+    <div class="notfound-inner">
+      <div class="notfound-gems">
+        <span class="notfound-gem">💎</span>
+        <span class="notfound-gem">💎</span>
+        <span class="notfound-gem">💎</span>
+      </div>
+      <div class="notfound-code">404</div>
+      <h2>This Path Doesn't Lead <span class="gold-text">Anywhere</span></h2>
+      <div class="gold-divider"></div>
+      <p>The page you're looking for has wandered off the right path. But don't worry — every journey has a way back. Let's get you to the right place.</p>
+      <p class="notfound-tagline">Right Knowledge · Right Path · Right Victory</p>
+      <div class="notfound-buttons">
+        <a href="index.html" class="btn btn-primary">✦ Back to Home</a>
+        <a href="courses.html" class="btn btn-outline">Explore Courses →</a>
+      </div>
+      <div class="notfound-links">
+        <a href="test-papers.html">Test Papers</a>
+        <a href="admission.html">Enroll Free</a>
+        <a href="faculty.html">Faculty</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP -->
+  <div class="whatsapp-float">
+    <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+    <a href="https://wa.me/[PHONE_PLACEHOLDER]" target="_blank" class="whatsapp-btn">💬</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ratnatrayainstitute.github.io/sitemap.xml

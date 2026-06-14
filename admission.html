@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admission — Ratnatraya Institute</title>
+  <meta name="description" content="Enroll free at Ratnatraya Institute — Bank PO/Clerk, SSC CGL/CHSL & Railway Exams. No registration fee, no hidden charges. Start today!" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ── Admission Page Specific ── */
+
+    /* Steps Section */
+    .steps-section { background: var(--black); }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 48px;
+      left: calc(12.5% + 24px);
+      right: calc(12.5% + 24px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), rgba(212,175,55,0.2), var(--gold));
+      z-index: 0;
+    }
+    .step-card {
+      padding: 32px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .step-number {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--black);
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+    .step-card h4 { color: var(--gold); margin-bottom: 0.6rem; font-size: 1rem; }
+    .step-card p { font-size: 0.83rem; line-height: 1.7; }
+
+    /* Batch Table */
+    .batch-section { background: var(--black-2); }
+    .batch-table-wrap { overflow-x: auto; }
+    .batch-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .batch-table th {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--glass-border);
+      background: rgba(212,175,55,0.05);
+      white-space: nowrap;
+    }
+    .batch-table td {
+      padding: 14px 20px;
+      color: var(--cream-muted);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: middle;
+    }
+    .batch-table tr:hover td { background: rgba(212,175,55,0.04); }
+    .batch-table td:first-child { color: var(--cream); font-weight: 600; }
+    .status-open {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+      background: rgba(39,174,96,0.15);
+      color: #2ecc71;
+      border: 1px solid rgba(39,174,96,0.3);
+    }
+    .status-open::before { content: ''; width: 6px; height: 6px; background: #2ecc71; border-radius: 50%; animation: pulse 2s infinite; }
+    .status-soon {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+      background: rgba(212,175,55,0.12);
+      color: var(--gold);
+      border: 1px solid rgba(212,175,55,0.3);
+    }
+    .free-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 50px;
+      background: rgba(39,174,96,0.15);
+      color: #2ecc71;
+      border: 1px solid rgba(39,174,96,0.3);
+    }
+
+    /* What You Get */
+    .get-section { background: var(--black); }
+    .get-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .get-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 22px 20px;
+    }
+    .get-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .get-text h4 { color: var(--cream); font-size: 0.92rem; margin-bottom: 0.3rem; }
+    .get-text p { font-size: 0.8rem; }
+
+    /* Inquiry Form */
+    .form-section { background: var(--black-2); }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .form-info h2 { margin-bottom: 1rem; }
+    .form-info p { margin-bottom: 1.5rem; line-height: 1.9; }
+    .form-highlights { display: flex; flex-direction: column; gap: 12px; margin-top: 1.5rem; }
+    .form-highlight {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--cream-muted);
+    }
+    .form-highlight span:first-child {
+      width: 32px; height: 32px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* Form Styles */
+    .enroll-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--cream-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 6px;
+      padding: 12px 16px;
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      transition: var(--transition);
+      outline: none;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      background: rgba(212,175,55,0.04);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+    }
+    .form-group select option { background: var(--black-3); color: var(--cream); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--cream-muted);
+      text-align: center;
+      margin-top: 4px;
+    }
+    .form-note a { color: var(--gold); }
+
+    /* Demo Section */
+    .demo-section { background: var(--black); }
+    .demo-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .demo-content h2 { margin-bottom: 1rem; }
+    .demo-content p { margin-bottom: 2rem; line-height: 1.9; }
+    .demo-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .demo-box {
+      width: 100%;
+      max-width: 360px;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .demo-box-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; }
+    .demo-box h3 { color: var(--gold); margin-bottom: 0.8rem; }
+    .demo-box p { font-size: 0.85rem; margin-bottom: 1.5rem; }
+
+    /* FAQ */
+    .faq-section { background: var(--black-2); }
+    .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .faq-item { padding: 24px; }
+    .faq-q {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .faq-q::before { content: 'Q'; font-weight: 900; flex-shrink: 0; }
+    .faq-a {
+      font-size: 0.85rem;
+      color: var(--cream-muted);
+      line-height: 1.8;
+      padding-left: 22px;
+    }
+
+    @media (max-width: 1024px) {
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid::before { display: none; }
+      .get-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .get-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .demo-inner { grid-template-columns: 1fr; }
+      .demo-visual { display: none; }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg class="logo-diamonds" viewBox="0 0 42 42" fill="none">
+          <polygon points="21,2 28,14 21,20 14,14" fill="#D4AF37" opacity="0.95"/>
+          <polygon points="10,18 17,26 10,34 3,26" fill="#A8860A" opacity="0.85"/>
+          <polygon points="32,18 39,26 32,34 25,26" fill="#F0D060" opacity="0.85"/>
+        </svg>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Ratnatraya Institute</span>
+          <span class="logo-tagline">Right Knowledge · Right Path · Right Victory</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="test-papers.html">Test Papers</a></li>
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admission.html" class="nav-enroll active">Enroll Free</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="courses.html">Courses</a>
+    <a href="test-papers.html">Test Papers</a>
+    <a href="faculty.html">Faculty</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+    <a href="admission.html" class="nav-enroll">Enroll Free Now</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Admission Open</span>
+      <h1><span class="gold-text">Enroll Free</span> Today</h1>
+      <div class="gold-divider"></div>
+      <p>Begin Your Journey to Government Job — Free Enrollment, No Hidden Charges, No Pressure.</p>
+      <div style="margin-top:2rem;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="#enroll-form" class="btn btn-primary">✦ Fill Inquiry Form</a>
+        <a href="https://wa.me/[PHONE_PLACEHOLDER]" class="btn btn-outline">💬 WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 STEPS -->
+  <section class="section steps-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Simple Process</span>
+        <h2>How to <span class="gold-text">Enroll</span> — 4 Simple Steps</h2>
+        <div class="gold-divider"></div>
+        <p>Getting started with Ratnatraya Institute takes less than 2 minutes.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="glass-card step-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="step-number">1</div>
+          <h4>Fill Inquiry Form</h4>
+          <p>Enter your name, email, phone & select your exam below. Takes less than 2 minutes.</p>
+        </div>
+        <div class="glass-card step-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="step-number">2</div>
+          <h4>Get WhatsApp Confirmation</h4>
+          <p>Our team will contact you on WhatsApp within 24 hours to confirm your enrollment.</p>
+        </div>
+        <div class="glass-card step-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="step-number">3</div>
+          <h4>Join Telegram Group</h4>
+          <p>Get access to free study material, mock tests & daily practice questions on Telegram.</p>
+        </div>
+        <div class="glass-card step-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="step-number">4</div>
+          <h4>Start Learning</h4>
+          <p>Access video lectures, notes, previous year papers & mock tests — completely free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BATCH TABLE -->
+  <section class="section batch-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Current Batches</span>
+        <h2>Batch <span class="gold-text">Details</span></h2>
+        <div class="gold-divider"></div>
+        <p>All current batches are 100% free — paid premium batches coming soon.</p>
+      </div>
+      <div class="batch-table-wrap glass-card" style="padding:0;overflow:hidden;" data-aos="fade-up">
+        <table class="batch-table">
+          <thead>
+            <tr>
+              <th>Exam</th>
+              <th>Batch Type</th>
+              <th>Mode</th>
+              <th>Duration</th>
+              <th>Fee</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bank PO — IBPS PO</td>
+              <td>Free Batch</td>
+              <td>100% Online</td>
+              <td>6 Months</td>
+              <td><span class="free-badge">FREE</span></td>
+              <td><span class="status-open">Open</span></td>
+              <td><a href="#enroll-form" class="btn btn-primary btn-sm">Enroll</a></td>
+            </tr>
+            <tr>
+              <td>Bank Clerk — IBPS Clerk</td>
+              <td>Free Batch</td>
+              <td>100% Online</td>
+              <td>5 Months</td>
+              <td><span class="free-badge">FREE</span></td>
+              <td><span class="status-open">Open</span></td>
+              <td><a href="#enroll-form" class="btn btn-primary btn-sm">Enroll</a></td>
+            </tr>
+            <tr>
+              <td>SSC CGL</td>
+              <td>Free Batch</td>
+              <td>100% Online</td>
+              <td>8 Months</td>
+              <td><span class="free-badge">FREE</span></td>
+              <td><span class="status-open">Open</span></td>
+              <td><a href="#enroll-form" class="btn btn-primary btn-sm">Enroll</a></td>
+            </tr>
+            <tr>
+              <td>SSC CHSL</td>
+              <td>Free Batch</td>
+              <td>100% Online</td>
+              <td>6 Months</td>
+              <td><span class="free-badge">FREE</span></td>
+              <td><span class="status-open">Open</span></td>
+              <td><a href="#enroll-form" class="btn btn-primary btn-sm">Enroll</a></td>
+            </tr>
+            <tr>
+              <td>RRB NTPC</td>
+              <td>Free Batch</td>
+              <td>100% Online</td>
+              <td>5 Months</td>
+              <td><span class="free-badge">FREE</span></td>
+              <td><span class="status-open">Open</span></td>
+              <td><a href="#enroll-form" class="btn btn-primary btn-sm">Enroll</a></td>
+            </tr>
+            <tr>
+              <td>RRB Group D</td>
+              <td>Free Batch</td>
+              <td>100% Online</td>
+              <td>4 Months</td>
+              <td><span class="free-badge">FREE</span></td>
+              <td><span class="status-open">Open</span></td>
+              <td><a href="#enroll-form" class="btn btn-primary btn-sm">Enroll</a></td>
+            </tr>
+            <tr>
+              <td>RRB ALP</td>
+              <td>Free Batch</td>
+              <td>100% Online</td>
+              <td>5 Months</td>
+              <td><span class="free-badge">FREE</span></td>
+              <td><span class="status-open">Open</span></td>
+              <td><a href="#enroll-form" class="btn btn-primary btn-sm">Enroll</a></td>
+            </tr>
+            <tr>
+              <td>All Exams — Premium</td>
+              <td>Paid Batch</td>
+              <td>100% Online</td>
+              <td>TBA</td>
+              <td>TBA</td>
+              <td><span class="status-soon">Coming Soon</span></td>
+              <td><a href="contact.html" class="btn btn-outline btn-sm">Notify Me</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="section get-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Free Benefits</span>
+        <h2>What You Get — <span class="gold-text">Completely Free</span></h2>
+        <div class="gold-divider"></div>
+        <p>Everything you need to crack your exam — zero cost, zero compromise on quality.</p>
+      </div>
+      <div class="get-grid">
+        <div class="glass-card get-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="get-icon">🎥</div>
+          <div class="get-text">
+            <h4>Video Lectures</h4>
+            <p>Bilingual (Hindi + English) structured video lectures for complete syllabus coverage.</p>
+          </div>
+        </div>
+        <div class="glass-card get-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="get-icon">📄</div>
+          <div class="get-text">
+            <h4>Chapter-wise PDF Notes</h4>
+            <p>Concise, exam-focused notes for every topic — downloadable and printable.</p>
+          </div>
+        </div>
+        <div class="glass-card get-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="get-icon">📝</div>
+          <div class="get-text">
+            <h4>Previous Year Papers</h4>
+            <p>Official PYQs in separate Hindi & English PDFs — Prelims & Mains both covered.</p>
+          </div>
+        </div>
+        <div class="glass-card get-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="get-icon">📊</div>
+          <div class="get-text">
+            <h4>Bilingual Mock Tests</h4>
+            <p>Expert crafted Prelims + Mains mock tests in bilingual format — exactly like real exam.</p>
+          </div>
+        </div>
+        <div class="glass-card get-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="get-icon">📰</div>
+          <div class="get-text">
+            <h4>Daily Current Affairs</h4>
+            <p>Daily updates on Telegram — Banking Awareness, Government Schemes, Sports & more.</p>
+          </div>
+        </div>
+        <div class="glass-card get-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="get-icon">💬</div>
+          <div class="get-text">
+            <h4>Telegram Group Access</h4>
+            <p>Study group with doubt support, daily practice questions & exam notifications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INQUIRY FORM -->
+  <section class="section form-section" id="enroll-form">
+    <div class="container">
+      <div class="form-grid">
+        <div class="form-info" data-aos="fade-right">
+          <span class="eyebrow">Free Enrollment</span>
+          <h2>Fill Your <span class="gold-text">Details</span></h2>
+          <div class="gold-divider left"></div>
+          <p>Our team will reach you on WhatsApp within 24 hours to confirm your enrollment and share access to study material.</p>
+          <div class="form-highlights">
+            <div class="form-highlight">
+              <span>✦</span>
+              <span>100% Free — No registration fee, no hidden charges</span>
+            </div>
+            <div class="form-highlight">
+              <span>📞</span>
+              <span>Response within 24 hours on WhatsApp</span>
+            </div>
+            <div class="form-highlight">
+              <span>🔒</span>
+              <span>Your details are safe — we never share your data</span>
+            </div>
+            <div class="form-highlight">
+              <span>✈</span>
+              <span>Immediate Telegram group access after confirmation</span>
+            </div>
+            <div class="form-highlight">
+              <span>🎯</span>
+              <span>Enroll in multiple exam courses simultaneously</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORM — Replace YOUR_FORMSPREE_ID with real Formspree ID -->
+        <div data-aos="fade-up">
+          <div class="glass-card" style="padding:36px;">
+            <form class="enroll-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Full Name *</label>
+                  <input type="text" id="name" name="name" placeholder="Your full name" required />
+                </div>
+                <div class="form-group">
+                  <label for="phone">WhatsApp Number *</label>
+                  <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required />
+              </div>
+              <div class="form-group">
+                <label for="exam">Select Exam *</label>
+                <select id="exam" name="exam" required>
+                  <option value="" disabled selected>Choose your exam</option>
+                  <option value="Bank PO - IBPS PO">Bank PO — IBPS PO</option>
+                  <option value="Bank Clerk - IBPS Clerk">Bank Clerk — IBPS Clerk</option>
+                  <option value="SSC CGL">SSC CGL</option>
+                  <option value="SSC CHSL">SSC CHSL</option>
+                  <option value="RRB NTPC">RRB NTPC</option>
+                  <option value="RRB Group D">RRB Group D</option>
+                  <option value="RRB ALP">RRB ALP</option>
+                  <option value="Multiple Exams">Multiple Exams</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="education">Education Level *</label>
+                  <select id="education" name="education" required>
+                    <option value="" disabled selected>Select level</option>
+                    <option value="10th Pass">10th Pass</option>
+                    <option value="12th Pass">12th Pass</option>
+                    <option value="Graduate">Graduate</option>
+                    <option value="Post Graduate">Post Graduate</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="source">How did you hear about us?</label>
+                  <select id="source" name="source">
+                    <option value="" disabled selected>Select source</option>
+                    <option value="Social Media">Social Media</option>
+                    <option value="Friend/Family">Friend / Family</option>
+                    <option value="Google Search">Google Search</option>
+                    <option value="YouTube">YouTube</option>
+                    <option value="Telegram">Telegram</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="message">Message (Optional)</label>
+                <textarea id="message" name="message" placeholder="Any specific questions or requirements..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:16px;">
+                ✦ Submit Inquiry — Enroll Free
+              </button>
+              <p class="form-note">
+                By submitting, you agree to be contacted on WhatsApp. Powered by <a href="https://formspree.io" target="_blank">Formspree</a>.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREE DEMO -->
+  <section class="section demo-section">
+    <div class="container">
+      <div class="demo-inner">
+        <div class="demo-content" data-aos="fade-right">
+          <span class="eyebrow">Try Before You Enroll</span>
+          <h2>Book a <span class="gold-text">Free Demo Class</span></h2>
+          <div class="gold-divider left"></div>
+          <p>Not sure yet? Experience our teaching style before enrolling — completely free, no commitment required. One demo class will show you exactly how Ratnatraya Institute is different from every other coaching.</p>
+          <a href="https://wa.me/[PHONE_PLACEHOLDER]?text=Hi%2C%20I%20want%20to%20book%20a%20free%20demo%20class%20at%20Ratnatraya%20Institute" target="_blank" class="btn btn-primary">
+            💬 Book Free Demo on WhatsApp
+          </a>
+        </div>
+        <div class="demo-visual" data-aos="zoom-in">
+          <div class="glass-card demo-box">
+            <span class="demo-box-icon">🎓</span>
+            <h3>Free Demo Class</h3>
+            <p>Experience our bilingual teaching, exam-focused approach and ethical guidance — all in one free session.</p>
+            <div style="display:flex;flex-direction:column;gap:8px;text-align:left;">
+              <div style="display:flex;align-items:center;gap:10px;font-size:0.83rem;color:var(--cream-muted);">
+                <span style="color:var(--gold);">✦</span> 100% Free — No charges
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;font-size:0.83rem;color:var(--cream-muted);">
+                <span style="color:var(--gold);">✦</span> No commitment required
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;font-size:0.83rem;color:var(--cream-muted);">
+                <span style="color:var(--gold);">✦</span> Bilingual — Hindi + English
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;font-size:0.83rem;color:var(--cream-muted);">
+                <span style="color:var(--gold);">✦</span> Book instantly on WhatsApp
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Common Questions</span>
+        <h2>Frequently Asked <span class="gold-text">Questions</span></h2>
+        <div class="gold-divider"></div>
+      </div>
+      <div class="faq-grid">
+        <div class="glass-card faq-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="faq-q">Is the course really free?</div>
+          <div class="faq-a">Yes! All our current batches are 100% free. No registration fee, no hidden charges. Paid premium batches will be launched soon with advanced features like live classes and personal mentoring.</div>
+        </div>
+        <div class="glass-card faq-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="faq-q">How will I access the study material?</div>
+          <div class="faq-a">After enrollment confirmation on WhatsApp, you will be added to our Telegram study group where all material — notes, mock tests, PYQs and daily practice questions — will be shared.</div>
+        </div>
+        <div class="glass-card faq-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="faq-q">Are the classes live or recorded?</div>
+          <div class="faq-a">Currently recorded video lectures are available for self-paced learning. Live classes will be introduced in the upcoming paid premium batches. Stay tuned on our Telegram channel.</div>
+        </div>
+        <div class="glass-card faq-item" data-aos="fade-up" data-aos-delay="400">
+          <div class="faq-q">In which language is the content?</div>
+          <div class="faq-a">All content is bilingual — Hindi + English both. Mock tests are in bilingual format (same PDF). Previous year papers are available in separate Hindi PDF and English PDF.</div>
+        </div>
+        <div class="glass-card faq-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="faq-q">Can I enroll in multiple exam courses?</div>
+          <div class="faq-a">Yes! You can enroll in as many exam courses as you want — all completely free. Many students prepare for Banking + SSC simultaneously.</div>
+        </div>
+        <div class="glass-card faq-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="faq-q">When will paid batches start?</div>
+          <div class="faq-a">Paid premium batches with live classes, personal mentoring and advanced test series are coming soon. Join our Telegram channel to get notified first when they launch.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <span class="eyebrow">Your Victory Begins Today</span>
+      <h2>Begin Your <span class="gold-text">Journey Now</span></h2>
+      <div class="gold-divider"></div>
+      <p>Join thousands of aspirants walking the right path — free enrollment, no hidden charges, no pressure.</p>
+      <div class="cta-buttons">
+        <a href="#enroll-form" class="btn btn-primary">✦ Enroll Free Now</a>
+        <a href="https://wa.me/[PHONE_PLACEHOLDER]" class="btn btn-outline">💬 Join Telegram →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom:1rem;display:inline-flex;">
+            <svg width="36" height="36" viewBox="0 0 42 42" fill="none">
+              <polygon points="21,2 28,14 21,20 14,14" fill="#D4AF37"/>
+              <polygon points="10,18 17,26 10,34 3,26" fill="#A8860A"/>
+              <polygon points="32,18 39,26 32,34 25,26" fill="#F0D060"/>
+            </svg>
+            <div class="logo-text-wrap" style="margin-left:10px;">
+              <span class="logo-name">Ratnatraya Institute</span>
+              <span class="logo-tagline">Right Knowledge · Right Path · Right Victory</span>
+            </div>
+          </a>
+          <p>India's most trusted online coaching institute — grounded in Jain philosophy of truth, wisdom &amp; integrity.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">▶</a>
+            <a href="#" class="social-btn">📸</a>
+            <a href="#" class="social-btn">f</a>
+            <a href="#" class="social-btn">✈</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="test-papers.html">Test Papers</a></li>
+            <li><a href="faculty.html">Faculty</a></li>
+            <li><a href="admission.html">Admission</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Courses</h5>
+          <ul>
+            <li><a href="bank-po.html">Bank PO — IBPS PO</a></li>
+            <li><a href="bank-clerk.html">Bank Clerk</a></li>
+            <li><a href="ssc-cgl.html">SSC CGL</a></li>
+            <li><a href="ssc-chsl.html">SSC CHSL</a></li>
+            <li><a href="rrb-ntpc.html">RRB NTPC</a></li>
+            <li><a href="rrb-groupd.html">RRB Group D</a></li>
+            <li><a href="rrb-alp.html">RRB ALP</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item"><span>📧</span><span>ratnatrayainstitute@gmail.com</span></div>
+          <div class="footer-contact-item"><span>📞</span><span>[Phone Placeholder]</span></div>
+          <div class="footer-contact-item"><span>💬</span><span>WhatsApp: [Placeholder]</span></div>
+          <div class="footer-contact-item"><span>🕐</span><span>Mon–Sat: 9AM–7PM</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Ratnatraya Institute. All Rights Reserved. · <a href="privacy-policy.html" style="color:var(--cream-muted);">Privacy Policy</a> · <a href="terms-conditions.html" style="color:var(--cream-muted);">Terms &amp; Conditions</a></p>
+        <span class="footer-bottom-tagline">Right Knowledge · Right Path · Right Victory</span>
+        <p>Built on Truth. Driven by Wisdom.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP -->
+  <div class="whatsapp-float">
+    <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+    <a href="https://wa.me/[PHONE_PLACEHOLDER]" target="_blank" class="whatsapp-btn">💬</a>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

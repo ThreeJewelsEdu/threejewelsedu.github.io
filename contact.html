@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Ratnatraya Institute</title>
+  <meta name="description" content="Contact Ratnatraya Institute — Email, WhatsApp, Social Media & Inquiry Form. We respond within 24 hours. Right Knowledge. Right Path. Right Victory." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ── Contact Page Specific ── */
+
+    /* Contact Cards Grid */
+    .contact-cards-section { background: var(--black); }
+    .contact-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .contact-card {
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .contact-card-icon {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 4px 20px var(--gold-glow);
+    }
+    .contact-card h4 { color: var(--cream); margin-bottom: 0.6rem; font-size: 1rem; }
+    .contact-card p { font-size: 0.85rem; margin-bottom: 1.2rem; }
+    .contact-card .detail-value {
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 0.92rem;
+      word-break: break-word;
+    }
+
+    /* Two Column Layout */
+    .contact-main { background: var(--black-2); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* Left Column - Info */
+    .contact-info-block { display: flex; flex-direction: column; gap: 24px; }
+    .info-block-card { padding: 28px; }
+    .info-block-card h3 {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .info-row:last-child { margin-bottom: 0; }
+    .info-row-icon {
+      width: 36px; height: 36px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .info-row-text strong { display: block; font-size: 0.88rem; color: var(--cream); margin-bottom: 2px; }
+    .info-row-text span { font-size: 0.8rem; color: var(--cream-muted); }
+    .info-row-text a { color: var(--gold); transition: var(--transition); }
+    .info-row-text a:hover { text-decoration: underline; }
+
+    /* Social Cards */
+    .social-list { display: flex; flex-direction: column; gap: 12px; }
+    .social-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--glass-border);
+      transition: var(--transition);
+    }
+    .social-item:hover { border-color: var(--gold); background: rgba(212,175,55,0.04); }
+    .social-item-icon {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    }
+    .social-item-text { flex: 1; }
+    .social-item-text strong { display: block; font-size: 0.85rem; color: var(--cream); }
+    .social-item-text span { font-size: 0.75rem; color: var(--cream-muted); }
+    .social-item-btn {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 50px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.25);
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+    .social-item-btn:hover { background: rgba(212,175,55,0.2); }
+
+    /* Right Column - Form */
+    .contact-form-card { padding: 36px; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--cream-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 6px;
+      padding: 12px 16px;
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      transition: var(--transition);
+      outline: none;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      background: rgba(212,175,55,0.04);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+    }
+    .form-group select option { background: var(--black-3); color: var(--cream); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--cream-muted);
+      text-align: center;
+      margin-top: 4px;
+    }
+    .form-note a { color: var(--gold); }
+
+    /* Map placeholder */
+    .map-placeholder {
+      width: 100%;
+      aspect-ratio: 16/6;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--black-3), var(--black-4));
+      border: 1px solid var(--glass-border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 0;
+    }
+    .map-placeholder-icon { font-size: 2.5rem; opacity: 0.4; }
+    .map-placeholder-text { font-size: 0.85rem; color: var(--cream-muted); text-align: center; max-width: 400px; line-height: 1.7; }
+
+    /* Quick Links / FAQ */
+    .quick-links-section { background: var(--black); }
+    .quick-links-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .quick-link-card {
+      padding: 24px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: var(--transition);
+    }
+    .quick-link-card:hover { transform: translateX(4px); }
+    .quick-link-text strong { display: block; font-size: 0.9rem; color: var(--cream); margin-bottom: 4px; }
+    .quick-link-text span { font-size: 0.8rem; color: var(--cream-muted); }
+    .quick-link-arrow { color: var(--gold); font-size: 1.3rem; flex-shrink: 0; }
+
+    /* Response time badges */
+    .response-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .response-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 50px;
+      background: rgba(212,175,55,0.08);
+      border: 1px solid rgba(212,175,55,0.2);
+      font-size: 0.78rem;
+      color: var(--cream-muted);
+    }
+    .response-badge strong { color: var(--gold); }
+
+    @media (max-width: 1024px) {
+      .contact-cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; }
+      .quick-links-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .contact-cards-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg class="logo-diamonds" viewBox="0 0 42 42" fill="none">
+          <polygon points="21,2 28,14 21,20 14,14" fill="#D4AF37" opacity="0.95"/>
+          <polygon points="10,18 17,26 10,34 3,26" fill="#A8860A" opacity="0.85"/>
+          <polygon points="32,18 39,26 32,34 25,26" fill="#F0D060" opacity="0.85"/>
+        </svg>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Ratnatraya Institute</span>
+          <span class="logo-tagline">Right Knowledge · Right Path · Right Victory</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="test-papers.html">Test Papers</a></li>
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="admission.html" class="nav-enroll">Enroll Free</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="courses.html">Courses</a>
+    <a href="test-papers.html">Test Papers</a>
+    <a href="faculty.html">Faculty</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+    <a href="admission.html" class="nav-enroll">Enroll Free Now</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Get in Touch</span>
+      <h1>Contact <span class="gold-text">Us</span></h1>
+      <div class="gold-divider"></div>
+      <p>We Are Here to Help — Reach Out Anytime, We Respond Fast. No bots, no delays — real people answering your queries.</p>
+      <div class="response-badges" style="justify-content:center;">
+        <div class="response-badge">💬 WhatsApp — <strong>2–4 hours</strong></div>
+        <div class="response-badge">📧 Email — <strong>24 hours</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CARDS -->
+  <section class="section contact-cards-section">
+    <div class="container">
+      <div class="contact-cards-grid">
+        <div class="glass-card contact-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="contact-card-icon">📧</div>
+          <h4>Email Us</h4>
+          <p>For detailed queries & documentation</p>
+          <a href="mailto:ratnatrayainstitute@gmail.com" class="detail-value">ratnatrayainstitute@gmail.com</a>
+        </div>
+        <div class="glass-card contact-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="contact-card-icon">📞</div>
+          <h4>Call Us</h4>
+          <p>Mon–Sat, 9 AM – 7 PM</p>
+          <a href="tel:[PHONE_PLACEHOLDER]" class="detail-value">[Phone Placeholder]</a>
+        </div>
+        <div class="glass-card contact-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="contact-card-icon">💬</div>
+          <h4>WhatsApp</h4>
+          <p>Fastest response — 2–4 hours</p>
+          <a href="https://wa.me/[PHONE_PLACEHOLDER]" target="_blank" class="detail-value">Chat Now →</a>
+        </div>
+        <div class="glass-card contact-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="contact-card-icon">🕐</div>
+          <h4>Support Hours</h4>
+          <p style="margin-bottom:0;">Mon–Sat: 9 AM – 7 PM<br/>Sunday: 10 AM – 2 PM</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTACT GRID -->
+  <section class="section contact-main">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Left Column -->
+        <div class="contact-info-block" data-aos="fade-right">
+
+          <!-- Reach Us Directly -->
+          <div class="glass-card info-block-card">
+            <h3>📍 Reach Us Directly</h3>
+            <div class="info-row">
+              <div class="info-row-icon">📧</div>
+              <div class="info-row-text">
+                <strong>Email</strong>
+                <a href="mailto:ratnatrayainstitute@gmail.com">ratnatrayainstitute@gmail.com</a>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-row-icon">📞</div>
+              <div class="info-row-text">
+                <strong>Phone / WhatsApp</strong>
+                <a href="tel:[PHONE_PLACEHOLDER]">[Phone Placeholder]</a>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-row-icon">🌐</div>
+              <div class="info-row-text">
+                <strong>Location</strong>
+                <span>100% Online — Pan India</span>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-row-icon">🕐</div>
+              <div class="info-row-text">
+                <strong>Support Hours</strong>
+                <span>Mon–Sat: 9:00 AM – 7:00 PM<br/>Sunday: 10:00 AM – 2:00 PM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <div class="glass-card info-block-card">
+            <h3>🔗 Connect on Social Media</h3>
+            <div class="social-list">
+              <div class="social-item">
+                <div class="social-item-icon">▶</div>
+                <div class="social-item-text">
+                  <strong>YouTube</strong>
+                  <span>Free lectures, exam tips & result updates</span>
+                </div>
+                <a href="#" target="_blank" class="social-item-btn">Subscribe</a>
+              </div>
+              <div class="social-item">
+                <div class="social-item-icon">📸</div>
+                <div class="social-item-text">
+                  <strong>Instagram</strong>
+                  <span>Daily motivation, tips & student stories</span>
+                </div>
+                <a href="#" target="_blank" class="social-item-btn">Follow</a>
+              </div>
+              <div class="social-item">
+                <div class="social-item-icon">f</div>
+                <div class="social-item-text">
+                  <strong>Facebook</strong>
+                  <span>Community, doubt clearing & updates</span>
+                </div>
+                <a href="#" target="_blank" class="social-item-btn">Follow</a>
+              </div>
+              <div class="social-item">
+                <div class="social-item-icon">✈</div>
+                <div class="social-item-text">
+                  <strong>Telegram</strong>
+                  <span>Free PDFs, mock tests & daily practice</span>
+                </div>
+                <a href="#" target="_blank" class="social-item-btn">Join</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map Placeholder -->
+          <div class="glass-card info-block-card">
+            <h3>🌍 We're Online — Everywhere</h3>
+            <div class="map-placeholder">
+              <span class="map-placeholder-icon">🌐</span>
+              <p class="map-placeholder-text">Ratnatraya Institute is a 100% online coaching institute — we serve students across India, from metro cities to the smallest towns. No physical location — your classroom is wherever you are.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column - Form -->
+        <div data-aos="fade-up">
+          <div class="glass-card contact-form-card">
+            <span class="eyebrow">Send a Message</span>
+            <h2 style="margin-bottom:0.5rem;">Get in <span class="gold-text">Touch</span></h2>
+            <p style="margin-bottom:1.5rem;">Fill the form below — we will get back to you within 24 hours.</p>
+
+            <!-- FORM — Replace YOUR_FORMSPREE_ID with real Formspree ID -->
+            <form class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cname">Full Name *</label>
+                  <input type="text" id="cname" name="name" placeholder="Your full name" required />
+                </div>
+                <div class="form-group">
+                  <label for="cemail">Email Address *</label>
+                  <input type="email" id="cemail" name="email" placeholder="your@email.com" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cphone">Phone / WhatsApp Number *</label>
+                <input type="tel" id="cphone" name="phone" placeholder="+91 XXXXX XXXXX" required />
+              </div>
+              <div class="form-group">
+                <label for="csubject">Subject *</label>
+                <select id="csubject" name="subject" required>
+                  <option value="" disabled selected>Select subject</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Course Information">Course Information</option>
+                  <option value="Admission Query">Admission Query</option>
+                  <option value="Technical Support">Technical Support</option>
+                  <option value="Study Material">Study Material</option>
+                  <option value="Faculty Query">Faculty Query</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="cmessage">Message *</label>
+                <textarea id="cmessage" name="message" placeholder="Write your message here..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:16px;">
+                ✦ Send Message
+              </button>
+              <p class="form-note">
+                Powered by <a href="https://formspree.io" target="_blank">Formspree</a>. We respond within 24 hours.
+              </p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK LINKS -->
+  <section class="section quick-links-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Quick Help</span>
+        <h2>Looking for <span class="gold-text">Quick Answers?</span></h2>
+        <div class="gold-divider"></div>
+      </div>
+      <div class="quick-links-grid">
+        <a href="admission.html" class="glass-card quick-link-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="quick-link-text">
+            <strong>How to enroll?</strong>
+            <span>Visit our Admission page</span>
+          </div>
+          <span class="quick-link-arrow">→</span>
+        </a>
+        <a href="courses.html" class="glass-card quick-link-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="quick-link-text">
+            <strong>What exams do you cover?</strong>
+            <span>Visit our Courses page</span>
+          </div>
+          <span class="quick-link-arrow">→</span>
+        </a>
+        <a href="test-papers.html" class="glass-card quick-link-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="quick-link-text">
+            <strong>How to access test papers?</strong>
+            <span>Visit our Test Papers page</span>
+          </div>
+          <span class="quick-link-arrow">→</span>
+        </a>
+        <a href="admission.html#enroll-form" class="glass-card quick-link-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="quick-link-text">
+            <strong>Is it really free?</strong>
+            <span>Yes! Visit Admission page for details</span>
+          </div>
+          <span class="quick-link-arrow">→</span>
+        </a>
+        <a href="#" class="glass-card quick-link-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="quick-link-text">
+            <strong>How to join Telegram?</strong>
+            <span>Click here to join our channel</span>
+          </div>
+          <span class="quick-link-arrow">→</span>
+        </a>
+        <a href="faculty.html" class="glass-card quick-link-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="quick-link-text">
+            <strong>Who are the teachers?</strong>
+            <span>Meet our Faculty</span>
+          </div>
+          <span class="quick-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <span class="eyebrow">Still Have Questions?</span>
+      <h2>We're Just a <span class="gold-text">Message Away</span></h2>
+      <div class="gold-divider"></div>
+      <p>Our team is always ready to help — reach out on WhatsApp for the fastest response.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/[PHONE_PLACEHOLDER]" target="_blank" class="btn btn-primary">💬 Chat on WhatsApp</a>
+        <a href="mailto:ratnatrayainstitute@gmail.com" class="btn btn-outline">📧 Send Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom:1rem;display:inline-flex;">
+            <svg width="36" height="36" viewBox="0 0 42 42" fill="none">
+              <polygon points="21,2 28,14 21,20 14,14" fill="#D4AF37"/>
+              <polygon points="10,18 17,26 10,34 3,26" fill="#A8860A"/>
+              <polygon points="32,18 39,26 32,34 25,26" fill="#F0D060"/>
+            </svg>
+            <div class="logo-text-wrap" style="margin-left:10px;">
+              <span class="logo-name">Ratnatraya Institute</span>
+              <span class="logo-tagline">Right Knowledge · Right Path · Right Victory</span>
+            </div>
+          </a>
+          <p>India's most trusted online coaching institute — grounded in Jain philosophy of truth, wisdom &amp; integrity.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">▶</a>
+            <a href="#" class="social-btn">📸</a>
+            <a href="#" class="social-btn">f</a>
+            <a href="#" class="social-btn">✈</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="test-papers.html">Test Papers</a></li>
+            <li><a href="faculty.html">Faculty</a></li>
+            <li><a href="admission.html">Admission</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Our Courses</h5>
+          <ul>
+            <li><a href="bank-po.html">Bank PO — IBPS PO</a></li>
+            <li><a href="bank-clerk.html">Bank Clerk</a></li>
+            <li><a href="ssc-cgl.html">SSC CGL</a></li>
+            <li><a href="ssc-chsl.html">SSC CHSL</a></li>
+            <li><a href="rrb-ntpc.html">RRB NTPC</a></li>
+            <li><a href="rrb-groupd.html">RRB Group D</a></li>
+            <li><a href="rrb-alp.html">RRB ALP</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item"><span>📧</span><span>ratnatrayainstitute@gmail.com</span></div>
+          <div class="footer-contact-item"><span>📞</span><span>[Phone Placeholder]</span></div>
+          <div class="footer-contact-item"><span>💬</span><span>WhatsApp: [Placeholder]</span></div>
+          <div class="footer-contact-item"><span>🕐</span><span>Mon–Sat: 9AM–7PM</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Ratnatraya Institute. All Rights Reserved. · <a href="privacy-policy.html" style="color:var(--cream-muted);">Privacy Policy</a> · <a href="terms-conditions.html" style="color:var(--cream-muted);">Terms &amp; Conditions</a></p>
+        <span class="footer-bottom-tagline">Right Knowledge · Right Path · Right Victory</span>
+        <p>Built on Truth. Driven by Wisdom.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP -->
+  <div class="whatsapp-float">
+    <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+    <a href="https://wa.me/[PHONE_PLACEHOLDER]" target="_blank" class="whatsapp-btn">💬</a>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
